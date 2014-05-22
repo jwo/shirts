@@ -1,0 +1,18 @@
+
+<div class="container">
+
+<% @shirts.each do |shirt| %>
+
+<div class="media">
+  <%= link_to shirt, class: "pull-left" do %>
+    <%= image_tag shirt.photo, class: "media-object img-responsive shirt-image img-thumbnail"%>
+  <% end %>
+  <div class="media-body">
+    <h4 class="media-heading"><%= shirt.name %></h4>
+    <p><%= shirt.description %></p>
+    <%= link_to "Shirt", shirt %>
+  </div>
+</div>
+<% end %>
+
+</div>

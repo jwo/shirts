@@ -1,0 +1,26 @@
+<div class="container">
+
+<h2 class="page-title"><%= @shirt.name %></h2>
+
+<%= form_tag charge_shirt_path, method: "POST" do %>
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<%= Rails.application.secrets.stripe_publishable_key %>"
+    data-name="Shirts"
+    data-description="<%= @shirt.description %> (<%= number_to_currency @shirt.price%>)"
+    data-amount="<%= @shirt.price_in_cents %>">
+  </script>
+<% end %>
+
+<div class="row">
+  <div class="col-sm-4">
+    <%= image_tag @shirt.photo, class: " img-responsive ", style:"width:300px; height: 300px"%>
+  </div>
+  <div class="col-sm-8">
+    <p><%= @shirt.description %></p>
+  </div>
+</div>
+
+
+
+</div>

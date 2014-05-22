@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item_id: 
+  price_in_cents: MyString
+  stripe_transaction: MyString
+
+two:
+  item_id: 
+  price_in_cents: MyString
+  stripe_transaction: MyString
