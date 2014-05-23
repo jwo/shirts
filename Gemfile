@@ -44,9 +44,10 @@ gem "stripe"
 gem "rails_admin"
 gem "rails_admin_import", :git => "git://github.com/stephskardal/rails_admin_import.git"
 gem 'carrierwave'
-gem "rmagick"
+gem 'rmagick', :require => 'RMagick'
 gem "pry"
 gem "pry-nav"
+gem "fog"
 
 
 group :production do
