@@ -8,13 +8,12 @@ CarrierWave.configure do |config|
       :region => Rails.application.secrets.s3_region,
     }
  
-  # For testing, upload files to local `tmp` folder.
-  if Rails.env.test? || Rails.env.development?
-    config.storage = :file
-  else
+  if Rails.env.production?
     config.storage = :fog
     config.cache_dir = "#{Rails.root}/tmp/uploads" 
     config.fog_directory = Rails.application.secrets.s3_bucket_name
+  else
+    config.storage = :file
   end
 
   config.enable_processing = false if Rails.env.test?
