@@ -2,25 +2,31 @@
 
 <h2 class="page-title"><%= @shirt.name %></h2>
 
-<%= form_tag charge_shirt_path, method: "POST" do %>
-  <script
-    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="<%= Rails.application.secrets.stripe_publishable_key %>"
-    data-name="Shirts"
-    data-description="<%= @shirt.description %> (<%= number_to_currency @shirt.price%>)"
-    data-amount="<%= @shirt.price_in_cents %>">
-  </script>
-<% end %>
+<div class="alert alert-warning">
+  <p>This is using a test STRIPE key -- your card will not be charged.</p>
+  <p>You should us 4242-4242-4242-4242 to success, and 4000-0000-0000-0001 to fail.</p>
+</div>
 
 <div class="row">
-  <div class="col-sm-4">
-    <%= image_tag @shirt.photo.url(:large) %>
+  <div class="col-md-4">
+    <%= image_tag @shirt.photo.url(:large), class: "img-responsive"%>
   </div>
-  <div class="col-sm-8">
+  <div class="col-md-8 well">
     <p><%= @shirt.description %></p>
+    <%= form_tag charge_shirt_path, method: "POST" do %>
+      <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="<%= Rails.application.secrets.stripe_publishable_key %>"
+        data-name="Shirts"
+        data-description="<%= @shirt.description %> (<%= number_to_currency @shirt.price%>)"
+        data-amount="<%= @shirt.price_in_cents %>">
+      </script>
+    <% end %>
   </div>
 </div>
 
-
+<p class="text-right">
+<%= link_to "Back", root_path, class: "btn btn-default"%>
+</p>
 
 </div>
